@@ -27,7 +27,7 @@ Get the latest Windows executable directly. No installation required!
 
 <div align="center">
 
-[![Download SoundWave](https://img.shields.io/badge/Windows-Download_v1.0.0-blue?style=for-the-badge&logo=windows&logoColor=white)](PASTE_YOUR_LINK_HERE)
+[![Download SoundWave](https://img.shields.io/badge/Windows-Download_v1.0.0-blue?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/Maddy0057/SoundWave/releases/download/v1.0.0/SoundWave.zip)
 
 </div>
 
