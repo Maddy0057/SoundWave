@@ -1,88 +1,181 @@
-# SoundWave – Desktop Web Music Player (.EXE)
+<div align="center">
 
-SoundWave is a local web music player built with Flask and Waitress that you can run as a Windows executable. It provides a modern UI (Tailwind via CDN), fast search powered by `ytmusicapi`, streaming via `yt-dlp`, and simple local playlists.
+# 🎵 **SoundWave Premium**
+### **The Ultimate Open-Source Music Experience**
 
-## Overview
-- Serves a local site at `http://127.0.0.1:5000`
-- Opens your default browser automatically
-- Streams audio directly from YouTube using `yt-dlp`
-- Stores playlists in a local `playlists.json`
+![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-Backend-000000?style=for-the-badge&logo=flask&logoColor=white)
+![Tailwind](https://img.shields.io/badge/UI-Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 
-## Key Features
-- Fast song search with caching (`cached_search` in `main.py` at c:\Users\shiva\OneDrive\Desktop\SoundWave\main.py:86)
-- Recommendations and autoplay queue (`/api/recommendations` at c:\Users\shiva\OneDrive\Desktop\SoundWave\main.py:115)
-- Stream best audio (`/stream/<videoId>` at c:\Users\shiva\OneDrive\Desktop\SoundWave\main.py:143)
-- Playlists: create, rename, delete, add/remove songs (routes at c:\Users\shiva\OneDrive\Desktop\SoundWave\main.py:167–214)
-- Production-grade serving using Waitress
-- Auto-download/update of `yt-dlp.exe` on first run
+<br />
 
-## How It Works
-- Backend: Flask app served by Waitress (`serve(...)` at c:\Users\shiva\OneDrive\Desktop\SoundWave\main.py:231–233)
-- Search: `ytmusicapi` for song search (`/api/search` at c:\Users\shiva\OneDrive\Desktop\SoundWave\main.py:90–113)
-- Streaming: Fetches a direct audio URL using `yt-dlp` and redirects the browser audio element (`/stream/<videoId>`)
-- UI: Single-page HTML in `templates/index.html` with Tailwind CDN and rich player interactions
-- Playlists: JSON file written next to the executable (`playlists.json`) via helpers at c:\Users\shiva\OneDrive\Desktop\SoundWave\main.py:54–73
+> **"Stop renting your music. Start owning the vibe."**
+>
+> A stunning, self-hosted Python Music Player and Flask Web App that streams **High-Fidelity Audio** directly from YouTube Music — **Ad-Free Streaming. Zero Tracking. Infinite Play.**
 
-## Requirements
-- Windows (tested as a packaged `.exe`)
-- Python 3.9+ (for running from source)
-- Internet access (for search, recommendations, streaming, and first-run `yt-dlp.exe` download)
-- Dependencies (see `requirements.txt`):
-  - Flask
-  - ytmusicapi
-  - fuzzywuzzy
-  - python-Levenshtein
-  - waitress
+[**View Demo**](#) · [**Report Bug**](https://github.com/Maddy0057/SoundWave/issues) · [**Request Feature**](https://github.com/Maddy0057/SoundWave/issues)
 
-## Run From Source
-1. Open a terminal in `c:\Users\shiva\OneDrive\Desktop\SoundWave`
-2. Install dependencies: `pip install -r requirements.txt`
-3. Run the app: `python main.py`
-4. Your browser opens to `http://127.0.0.1:5000`
+</div>
 
-Notes:
-- On first run, the app downloads `yt-dlp.exe` automatically and checks for updates daily (c:\Users\shiva\OneDrive\Desktop\SoundWave\main.py:218–230).
-- Templates are loaded via a PyInstaller-friendly `resource_path(...)` helper.
+---
 
-## Build the Windows .EXE
-Packaging is optional; running from source works fine. To create a single-file executable with PyInstaller:
+## 🔥 **Why SoundWave?**
 
-1. Install PyInstaller: `pip install pyinstaller`
-2. From the project folder, run:
-   - `pyinstaller --noconsole --onefile --add-data "templates;templates" --name SoundWave main.py`
-3. The output `.exe` appears in the `dist` folder. Place `yt-dlp.exe` next to the `.exe` for immediate streaming, or let the app download it on first run.
+Most open-source music players are command-line only or lack visual polish. **SoundWave** changes the game. It combines a **Next-Gen Glassmorphism UI** with robust Python engineering to deliver a Spotify-like experience for free.
 
-Tips:
-- `--add-data "templates;templates"` ensures the HTML is bundled. The app’s `resource_path` uses `sys._MEIPASS` when frozen.
-- If antivirus or SmartScreen warns on first run, allow the app; it only serves on `127.0.0.1`.
+### 🚀 **Killer Features**
 
-## Using the App
-- Search: Type at least 2 characters to search songs; click a result to play.
-- Queue: Clicking results appends to the queue; use next/previous, shuffle, repeat.
-- Autoplay: Toggle the infinity icon to automatically add similar songs at the end of your queue.
-- Playlists: Create/rename/delete playlists, add/remove songs directly from search or playlist views. Data persists to `playlists.json` next to the app.
+- **♾️ Smart Infinite Autoplay**
+  - When your queue ends, our smart algorithm fetches **20+ similar songs** automatically based on the last track.
+- **🚫 Ad-Free High-Fidelity Streaming**
+  - We stream pure, high-quality audio (m4a) using `yt-dlp` with seamless redirects.
+- **🖼️ Crystal Clear HD Visuals**
+  - Forced `maxresdefault` thumbnails for crisp, retina-ready album art on every track.
+- **🎨 Stunning Glass UI**
+  - Desktop-first interface built with **TailwindCSS** (CDN), smooth animations, and a layout that feels native on Desktop.
+- **💾 Persistent Local Playlists**
+  - Create, rename, delete playlists. Your data is saved locally (`playlists.json`).
+- **⚡ Auto-Setup Architecture**
+  - Powered by **Flask** and **Waitress**. Automatically downloads/updates `yt-dlp.exe` on first run.
 
-## Files
-- `templates/index.html` – UI and player interactions
-- `main.py` – Flask routes, streaming, playlist persistence, `yt-dlp` handling
-- `requirements.txt` – Python dependencies
+---
 
-## API Endpoints
-- `GET /api/search?query=...` – Top song results (c:\Users\shiva\OneDrive\Desktop\SoundWave\main.py:90–113)
-- `GET /api/recommendations?videoId=...` – Similar songs for autoplay (c:\Users\shiva\OneDrive\Desktop\SoundWave\main.py:115–142)
-- `GET /stream/<videoId>` – Redirects to a direct audio URL (c:\Users\shiva\OneDrive\Desktop\SoundWave\main.py:143–163)
-- `GET /api/playlists` – List playlists (c:\Users\shiva\OneDrive\Desktop\SoundWave\main.py:167–168)
-- `POST /api/playlists` – Create playlist (c:\Users\shiva\OneDrive\Desktop\SoundWave\main.py:170–179)
-- `DELETE /api/playlists/<name>` – Delete playlist (c:\Users\shiva\OneDrive\Desktop\SoundWave\main.py:181–187)
-- `POST /api/playlists/<name>/songs` – Add song (c:\Users\shiva\OneDrive\Desktop\SoundWave\main.py:189–197)
-- `DELETE /api/playlists/<name>/songs/<videoId>` – Remove song (c:\Users\shiva\OneDrive\Desktop\SoundWave\main.py:199–205)
-- `PUT /api/playlists/<old>` – Rename playlist (c:\Users\shiva\OneDrive\Desktop\SoundWave\main.py:207–214)
+## 🛠️ **Tech Stack & Keywords**
 
-## Troubleshooting
-- Audio doesn’t play: Ensure Internet access and that `yt-dlp.exe` exists next to the app or allow the first-run download.
-- Port in use: The app binds to `127.0.0.1:5000`; close other services using that port.
-- Templates not found: When packaging, ensure `--add-data "templates;templates"` is provided.
-- Firewall/AV prompts: Allow local network access; the app serves only to your machine.
+- **Backend:** Python 3, Flask, Waitress (WSGI)
+- **Streaming:** yt-dlp (FFmpeg pipeline), subprocess
+- **Frontend:** HTML5, Vanilla JavaScript (ES6+), TailwindCSS (CDN)
+- **Data Source:** YTMusicAPI (reverse engineered)
+- **Design:** Glassmorphism, Dark Mode
+- **Keywords:** Python Music Player, Flask Web App, Ad-Free Streaming, YouTube Music, Tailwind CSS, Windows .EXE
 
-## License and Content
-This project streams from YouTube. Please follow YouTube’s Terms of Service in your region.
+---
+
+## ⚡ **Quick Start Guide**
+
+Go from zero to streaming in **30 seconds**.
+
+### **Prerequisites**
+- Python 3.8 or higher
+
+### **1. Clone the Repository**
+```bash
+git clone https://github.com/Maddy0057/SoundWave.git
+cd SoundWave
+```
+
+### **2. Install Dependencies**
+We recommend using a virtual environment.
+
+```bash
+# Windows
+python -m venv venv
+venv\Scripts\activate
+
+# Mac/Linux
+python3 -m venv venv
+source venv/bin/activate
+
+# Install requirements
+pip install -r requirements.txt
+```
+
+> Note: You do not need to install `yt-dlp` manually. SoundWave downloads the correct binary automatically on first run.
+
+### **3. Launch the App 🚀**
+```bash
+python main.py
+```
+The Waitress server starts and your browser opens at `http://127.0.0.1:5000`.
+
+---
+
+## 📸 **Screenshots**
+<div align="center">
+
+Desktop Views
+
+<img src="assets/image.png" alt="SoundWave Desktop View 1" width="900" />
+<br />
+<img src="assets/image1.png" alt="SoundWave Desktop View 2" width="900" />
+
+</div>
+
+---
+
+## 📂 **Project Structure**
+```
+SoundWave/
+├── main.py              # Flask backend & logic
+├── templates/
+│   └── index.html       # Frontend UI (Tailwind + JS)
+├── requirements.txt     # Python dependencies
+├── playlists.json       # Local playlist storage (created at runtime)
+├── yt-dlp.exe           # Audio engine (auto-managed)
+└── README.md            # You are here
+```
+
+---
+
+## 🎮 **How To Use**
+- **Search & Play:** Type any song, artist, or album in the top bar. Click a result to play.
+- **Queue Management:** Click the add button to queue songs without stopping playback.
+- **Autoplay Mode:** The infinity icon is ON by default; similar songs auto-append when the queue ends.
+- **Playlists:** Save songs to playlists, and manage them from the sidebar (Create, Rename, Delete).
+
+---
+
+## 🧩 **API Endpoints**
+- `GET /api/search?query=...` – Top song results
+- `GET /api/recommendations?videoId=...` – Similar songs for autoplay
+- `GET /stream/<videoId>` – Redirects to a direct audio URL
+- `GET /api/playlists` – List playlists
+- `POST /api/playlists` – Create playlist
+- `DELETE /api/playlists/<name>` – Delete playlist
+- `POST /api/playlists/<name>/songs` – Add song
+- `DELETE /api/playlists/<name>/songs/<videoId>` – Remove song
+- `PUT /api/playlists/<old>` – Rename playlist
+
+---
+
+## 🏁 **Build the Windows .EXE**
+Create a single-file executable with PyInstaller:
+
+```bash
+pip install pyinstaller
+pyinstaller --noconsole --onefile --add-data "templates;templates" --name SoundWave main.py
+```
+The `.exe` will appear in the `dist` folder. Place `yt-dlp.exe` next to it (or let the app auto-download on first run).
+
+---
+
+## 🤝 **Contributing**
+We want to make this the #1 Open Source Music Player on GitHub.
+
+```bash
+# Fork the project
+# Create your feature branch
+git checkout -b feature/AmazingFeature
+# Commit your changes
+git commit -m "Add some AmazingFeature"
+# Push to the branch
+git push origin feature/AmazingFeature
+# Open a Pull Request
+```
+
+---
+
+## 📜 **License**
+Distributed under the MIT License. See `LICENSE` for more information.
+
+<div align="center">
+
+Love the project?
+
+**Give it a ⭐ Star on GitHub!**
+
+Made with ❤️ and Python.
+
+</div>
