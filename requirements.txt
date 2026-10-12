@@ -1,0 +1,6 @@
+flask
+ytmusicapi
+waitress
+requests
+beautifulsoup4
+pyinstaller

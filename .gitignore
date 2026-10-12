@@ -1,0 +1,14 @@
+dist/
+build/
+*.exe
+yt-dlp.exe
+data/
+lyrics_cache/
+last_update_check.txt
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.DS_Store
+Thumbs.db
